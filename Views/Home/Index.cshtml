@@ -1,0 +1,132 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+<h1>Doctor Who RPG: Adventures in Time and Space</h1>
+<h2>Players Resource</h2>
+
+<div class = "CharacterSheet">
+    <p>
+    Character Points: @ViewBag.charP<br>
+    Skill Points: @ViewBag.skillP<br>
+    Max Story Points: @ViewBag.storyP<br>
+    </p>
+
+    <h3>Biodata</h3>
+    <p>Name:<br>
+    Description</p>
+    <h3>Attributes</h3>
+    <form action = "attributes" method = "post">
+    <p>Awareness: 
+        @ViewBag.AwarenessVal
+        <select name ="Awareness">
+        <option value=""></option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        </select>
+        <br>
+    Coordination:
+        @ViewBag.CoordinationVal
+        <select name ="Coordination">
+        <option value=""></option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        </select>
+        <br>
+    Ingenuity:
+        @ViewBag.IngenuityVal
+        <select name ="Ingenuity">
+        <option value=""></option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        </select>
+        <br>
+    Presence:
+        @ViewBag.PresenceVal
+        <select name ="Presence">
+        <option value=""></option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        </select>
+        <br>
+    Resolve:
+         @ViewBag.ResolveVal
+         <select name ="Resolve">
+        <option value=""></option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        </select>
+        <br>
+    Strength:
+        @ViewBag.StrengthVal
+        <select name ="Strength">
+        <option value=""></option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        </select>
+        <br>
+    </p>
+    <button type="submit">Submit</button><br>
+    </form>
+    <h3>Skills</h3>
+    <p>Athletics:<br>
+    Convince:<br>
+    Craft:<br>
+    Medicine:<br>
+    Fighting:<br>
+    Knowledge:<br>
+    Marskman:<br>
+    Medicine:<br>
+    Science:<br>
+    Subterfuge:<br>
+    Survival:<br>
+    Technology:<br>
+    Transport:<br>
+    </p>
+    <h3>Traits</h3>
+    <br>
+    <h3>Stuff</h3>
+    <br>
+    
+</div>
