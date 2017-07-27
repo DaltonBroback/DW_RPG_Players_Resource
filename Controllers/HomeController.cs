@@ -190,7 +190,7 @@ namespace AiTaS.Controllers
             } 
             ViewBag.PresenceButtons += "> 8 <input type='radio' name='Presence' value='9'";
             if(Presence == 9){
-                ViewBag.Presence += " checked";
+                ViewBag.PresenceButtons += " checked";
             } 
             ViewBag.PresenceButtons += "> 9 <br>";
 
@@ -233,7 +233,7 @@ namespace AiTaS.Controllers
             } 
             ViewBag.ResolveButtons += "> 8 <input type='radio' name='Resolve' value='9'";
             if(Resolve == 9){
-                ViewBag.Resolve += " checked";
+                ViewBag.ResolveButtons += " checked";
             } 
             ViewBag.ResolveButtons += "> 9 <br>";
 
