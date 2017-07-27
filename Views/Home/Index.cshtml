@@ -17,83 +17,26 @@
     <h3>Attributes</h3>
      <form action = "attributes" method = "post"> 
     <p>Awareness: 
-        @ViewBag.AwarenessVal
-        <br>
-        <input type="radio" name="Awareness" value="1"> 1
-        <input type="radio" name="Awareness" value="2"> 2
-        <input type="radio" name="Awareness" value="3"> 3
-        <input type="radio" name="Awareness" value="4" checked> 4
-        <input type="radio" name="Awareness" value="5"> 5
-        <input type="radio" name="Awareness" value="6"> 6
-        <input type="radio" name="Awareness" value="7"> 7
-        <input type="radio" name="Awareness" value="8"> 8
-        <input type="radio" name="Awareness" value="9"> 9
-        <br>
+        @ViewBag.Awareness
+        @Html.Raw(@ViewBag.AwarenessButtons)
     Coordination:
-        @ViewBag.CoordinationVal
-        <br>
-        <input type="radio" name="Coordination" value="1"> 1
-        <input type="radio" name="Coordination" value="2"> 2
-        <input type="radio" name="Coordination" value="3"> 3
-        <input type="radio" name="Coordination" value="4" checked> 4
-        <input type="radio" name="Coordination" value="5"> 5
-        <input type="radio" name="Coordination" value="6"> 6
-        <input type="radio" name="Coordination" value="7"> 7
-        <input type="radio" name="Coordination" value="8"> 8
-        <input type="radio" name="Coordination" value="9"> 9
-        <br>
+        @ViewBag.Coordination
+        @Html.Raw(@ViewBag.CoordinationButtons)
     Ingenuity:
-        @ViewBag.IngenuityVal
-        <br>
-        <input type="radio" name="Ingenuity" value="1"> 1
-        <input type="radio" name="Ingenuity" value="2"> 2
-        <input type="radio" name="Ingenuity" value="3"> 3
-        <input type="radio" name="Ingenuity" value="4" checked> 4
-        <input type="radio" name="Ingenuity" value="5"> 5
-        <input type="radio" name="Ingenuity" value="6"> 6
-        <input type="radio" name="Ingenuity" value="7"> 7
-        <input type="radio" name="Ingenuity" value="8"> 8
-        <input type="radio" name="Ingenuity" value="9"> 9
-        <br>
+        @ViewBag.Ingenuity
+        @Html.Raw(@ViewBag.IngenuityButtons)
     Presence:
-        @ViewBag.PresenceVal
-        <br>
-        <input type="radio" name="Presence" value="1"> 1
-        <input type="radio" name="Presence" value="2"> 2
-        <input type="radio" name="Presence" value="3"> 3
-        <input type="radio" name="Presence" value="4" checked> 4
-        <input type="radio" name="Presence" value="5"> 5
-        <input type="radio" name="Presence" value="6"> 6
-        <input type="radio" name="Presence" value="7"> 7
-        <input type="radio" name="Presence" value="8"> 8
-        <input type="radio" name="Presence" value="9"> 9
-        <br>
+        @ViewBag.Presence
+        @Html.Raw(@ViewBag.PresenceButtons)
+
     Resolve:
-         @ViewBag.ResolveVal
-        <br>
-        <input type="radio" name="Resolve" value="1"> 1
-        <input type="radio" name="Resolve" value="2"> 2
-        <input type="radio" name="Resolve" value="3"> 3
-        <input type="radio" name="Resolve" value="4" checked> 4
-        <input type="radio" name="Resolve" value="5"> 5
-        <input type="radio" name="Resolve" value="6"> 6
-        <input type="radio" name="Resolve" value="7"> 7
-        <input type="radio" name="Resolve" value="8"> 8
-        <input type="radio" name="Resolve" value="9"> 9
-        <br>
+         @ViewBag.Resolve
+        @Html.Raw(@ViewBag.ResolveButtons)
+
     Strength:
-        @ViewBag.StrengthVal
-         <br>
-        <input type="radio" name="Strength" value="1"> 1
-        <input type="radio" name="Strength" value="2"> 2
-        <input type="radio" name="Strength" value="3"> 3
-        <input type="radio" name="Strength" value="4" checked> 4
-        <input type="radio" name="Strength" value="5"> 5
-        <input type="radio" name="Strength" value="6"> 6
-        <input type="radio" name="Strength" value="7"> 7
-        <input type="radio" name="Strength" value="8"> 8
-        <input type="radio" name="Strength" value="9"> 9
-        <br>
+        @ViewBag.Strength
+        @Html.Raw(@ViewBag.StrengthButtons)
+
     </p>
      <button type="submit">Submit</button><br> 
      </form> 
