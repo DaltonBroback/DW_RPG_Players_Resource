@@ -17,6 +17,12 @@ namespace AiTaS.Controllers
             int charP = 24;
             int skillP = 18;
             int storyP = 12;
+            int athletics = 0;
+            // if(ViewBag.athletics != 0){
+            //     athletics = ViewBag.athletics;
+            // }
+            // ViewBag.athletics = athletics;
+            
             //Get attribute values from session data, default to 3 if none exists.
             //3 is the recommended starting attribute value when creating characters because it leaves 6 points for skills
             //Afterwards, determines what the attribute value is and automatically checks the box denoting the current value
@@ -26,6 +32,81 @@ namespace AiTaS.Controllers
             if(Awareness == 0){
                 Awareness = 3;
             }
+            AwarenessConvert(Awareness);
+
+            //Coordination
+            int Coordination = Convert.ToInt32(HttpContext.Session.GetInt32("Coordination"));
+            if(Coordination == 0){
+                Coordination = 3;
+            }
+            CoordinationConvert(Coordination);
+
+            //Ingenuity
+            int Ingenuity = Convert.ToInt32(HttpContext.Session.GetInt32("Ingenuity"));
+            if(Ingenuity == 0){
+                Ingenuity = 3;
+            }
+            IngenuityConvert(Ingenuity);
+
+            //Presence
+            int Presence = Convert.ToInt32(HttpContext.Session.GetInt32("Presence"));
+            if(Presence == 0){
+                Presence = 3;
+            }
+            PresenceConvert(Presence);
+
+            //Resolve
+            int Resolve = Convert.ToInt32(HttpContext.Session.GetInt32("Resolve"));
+            if(Resolve == 0){
+                Resolve = 3;
+            }
+            ResolveConvert(Resolve);
+            
+            ///Strength
+            int Strength = Convert.ToInt32(HttpContext.Session.GetInt32("Strength"));
+            if(Strength == 0){
+                Strength = 3;
+            }
+            StrengthConvert(Strength);
+            
+            //Remove attribute values from character points
+            charP = 24 - Awareness - Coordination - Ingenuity - Presence - Resolve - Strength;
+            ViewBag.charP = charP;
+            ViewBag.skillP = skillP;
+            ViewBag.storyP = storyP; 
+            ViewBag.Awareness = Awareness;
+            ViewBag.Coordination = Coordination;
+            ViewBag.Ingenuity = Ingenuity;
+            ViewBag.Presence = Presence;
+            ViewBag.Resolve = Resolve;
+            ViewBag.Strength = Strength;
+            return View();
+        }
+
+        //Save selected values to session upon submitting attributes
+        [HttpPost]
+        [Route("attributes")]
+        public IActionResult Attributes(int Awareness, int Coordination, int Ingenuity, int Presence, int Resolve, int Strength)
+        {
+            HttpContext.Session.SetInt32("Awareness", Awareness);
+            HttpContext.Session.SetInt32("Coordination", Coordination);
+            HttpContext.Session.SetInt32("Ingenuity", Ingenuity);
+            HttpContext.Session.SetInt32("Presence", Presence);
+            HttpContext.Session.SetInt32("Resolve", Resolve);
+            HttpContext.Session.SetInt32("Strength", Strength);
+            return RedirectToAction("Index");
+        }
+
+        // [HttpPost]
+        // [Route("plus")]
+        // public IActionResult Plus()
+        // {
+        //     int athletics = ViewBag.athletics;
+        //     athletics += 1;
+        //     ViewBag.athletics = athletics;
+        //     return RedirectToAction("Index");
+        // }
+        public void AwarenessConvert(int Awareness){
             ViewBag.AwarenessButtons += "<br><input type='radio' name='Awareness' value='1'";
             if(Awareness == 1){
                 ViewBag.AwarenessButtons += " checked";
@@ -63,12 +144,8 @@ namespace AiTaS.Controllers
                 ViewBag.AwarenessButtons += " checked";
             } 
             ViewBag.AwarenessButtons += "> 9 <br>";
-
-            //Coordination
-            int Coordination = Convert.ToInt32(HttpContext.Session.GetInt32("Coordination"));
-            if(Coordination == 0){
-                Coordination = 3;
-            }
+        }
+        public void CoordinationConvert(int Coordination){
             ViewBag.CoordinationButtons += "<br><input type='radio' name='Coordination' value='1'";
             if(Coordination == 1){
                 ViewBag.CoordinationButtons += " checked";
@@ -106,13 +183,8 @@ namespace AiTaS.Controllers
                 ViewBag.CoordinationButtons += " checked";
             } 
             ViewBag.CoordinationButtons += "> 9 <br>";
-
-            //Ingenuity
-            int Ingenuity = Convert.ToInt32(HttpContext.Session.GetInt32("Ingenuity"));
-            if(Ingenuity == 0){
-                Ingenuity = 3;
-            }
-
+        }
+        public void IngenuityConvert(int Ingenuity){
             ViewBag.IngenuityButtons += "<br><input type='radio' name='Ingenuity' value='1'";
             if(Ingenuity == 1){
                 ViewBag.IngenuityButtons += " checked";
@@ -150,12 +222,8 @@ namespace AiTaS.Controllers
                 ViewBag.IngenuityButtons += " checked";
             } 
             ViewBag.IngenuityButtons += "> 9 <br>";
-
-            //Presence
-            int Presence = Convert.ToInt32(HttpContext.Session.GetInt32("Presence"));
-            if(Presence == 0){
-                Presence = 3;
-            }
+        }
+        public void PresenceConvert(int Presence){
             ViewBag.PresenceButtons += "<br><input type='radio' name='Presence' value='1'";
             if(Presence == 1){
                 ViewBag.PresenceButtons += " checked";
@@ -193,12 +261,8 @@ namespace AiTaS.Controllers
                 ViewBag.PresenceButtons += " checked";
             } 
             ViewBag.PresenceButtons += "> 9 <br>";
-
-            //Resolve
-            int Resolve = Convert.ToInt32(HttpContext.Session.GetInt32("Resolve"));
-            if(Resolve == 0){
-                Resolve = 3;
-            }
+        }
+        public void ResolveConvert(int Resolve){
             ViewBag.ResolveButtons += "<br><input type='radio' name='Resolve' value='1'";
             if(Resolve == 1){
                 ViewBag.ResolveButtons += " checked";
@@ -236,12 +300,8 @@ namespace AiTaS.Controllers
                 ViewBag.ResolveButtons += " checked";
             } 
             ViewBag.ResolveButtons += "> 9 <br>";
-
-            ///Strength
-            int Strength = Convert.ToInt32(HttpContext.Session.GetInt32("Strength"));
-            if(Strength == 0){
-                Strength = 3;
-            }
+        }
+        public void StrengthConvert(int Strength){
             ViewBag.StrengthButtons += "<br><input type='radio' name='Strength' value='1'";
             if(Strength == 1){
                 ViewBag.StrengthButtons += " checked";
@@ -279,32 +339,6 @@ namespace AiTaS.Controllers
                 ViewBag.StrengthButtons += " checked";
             } 
             ViewBag.StrengthButtons += "> 9 <br>";
-            //Remove attribute values from character points
-            charP = 24 - Awareness - Coordination - Ingenuity - Presence - Resolve - Strength;
-            ViewBag.charP = charP;
-            ViewBag.skillP = skillP;
-            ViewBag.storyP = storyP; 
-            ViewBag.Awareness = Awareness;
-            ViewBag.Coordination = Coordination;
-            ViewBag.Ingenuity = Ingenuity;
-            ViewBag.Presence = Presence;
-            ViewBag.Resolve = Resolve;
-            ViewBag.Strength = Strength;
-            return View();
-        }
-
-        //Save selected values to session upon submitting attributes
-        [HttpPost]
-        [Route("attributes")]
-        public IActionResult Attributes(int Awareness, int Coordination, int Ingenuity, int Presence, int Resolve, int Strength)
-        {
-            HttpContext.Session.SetInt32("Awareness", Awareness);
-            HttpContext.Session.SetInt32("Coordination", Coordination);
-            HttpContext.Session.SetInt32("Ingenuity", Ingenuity);
-            HttpContext.Session.SetInt32("Presence", Presence);
-            HttpContext.Session.SetInt32("Resolve", Resolve);
-            HttpContext.Session.SetInt32("Strength", Strength);
-            return RedirectToAction("Index");
         }
     }
 }
