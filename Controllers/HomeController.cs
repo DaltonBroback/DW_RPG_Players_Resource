@@ -17,12 +17,10 @@ namespace AiTaS.Controllers
             int charP = 24;
             int skillP = 18;
             int storyP = 12;
-            int athletics = 0;
-            // if(ViewBag.athletics != 0){
-            //     athletics = ViewBag.athletics;
-            // }
-            // ViewBag.athletics = athletics;
-            
+
+            //*************************************************
+            //ATTRIBUTES
+            //*************************************************
             //Get attribute values from session data, default to 3 if none exists.
             //3 is the recommended starting attribute value when creating characters because it leaves 6 points for skills
             //Afterwards, determines what the attribute value is and automatically checks the box denoting the current value
@@ -71,23 +69,70 @@ namespace AiTaS.Controllers
             
             //Remove attribute values from character points
             charP = 24 - Awareness - Coordination - Ingenuity - Presence - Resolve - Strength;
+
+            //*************************************************
+            //Skills
+            //*************************************************
+            int athletics = Convert.ToInt32(HttpContext.Session.GetInt32("Athletics"));
+            int convince = Convert.ToInt32(HttpContext.Session.GetInt32("Convince"));
+            int craft = Convert.ToInt32(HttpContext.Session.GetInt32("Craft"));
+            int fighting = Convert.ToInt32(HttpContext.Session.GetInt32("Fighting"));
+            int knowledge = Convert.ToInt32(HttpContext.Session.GetInt32("Knowledge"));
+            int marksman = Convert.ToInt32(HttpContext.Session.GetInt32("Marksman"));
+            int medicine = Convert.ToInt32(HttpContext.Session.GetInt32("Medicine"));
+            int science = Convert.ToInt32(HttpContext.Session.GetInt32("Science"));
+            int subterfuge = Convert.ToInt32(HttpContext.Session.GetInt32("Subterfuge"));
+            int survival = Convert.ToInt32(HttpContext.Session.GetInt32("Survival"));
+            int technology = Convert.ToInt32(HttpContext.Session.GetInt32("Technology"));
+            int transport = Convert.ToInt32(HttpContext.Session.GetInt32("Transport"));
+
+            int skillPool = athletics + convince + craft + fighting + knowledge + marksman + medicine + science + subterfuge + survival + technology + transport;
+
+            while(charP > 0 && skillPool > 0){
+                charP -= 1;
+                skillPool -= 1;
+            }
+            if(skillPool > 0){
+                while(skillPool > 0){
+                    skillP -= 1;
+                    skillPool -= 1;
+                }
+            }
+
+            //Total Points
             ViewBag.charP = charP;
             ViewBag.skillP = skillP;
             ViewBag.storyP = storyP; 
+
+            //Stats
             ViewBag.Awareness = Awareness;
             ViewBag.Coordination = Coordination;
             ViewBag.Ingenuity = Ingenuity;
             ViewBag.Presence = Presence;
             ViewBag.Resolve = Resolve;
             ViewBag.Strength = Strength;
+
+            //Skills
+            ViewBag.athletics = athletics;
+            ViewBag.convince = convince;
+            ViewBag.craft = craft;
+            ViewBag.fighting = fighting;
+            ViewBag.knowledge = knowledge;
+            ViewBag.marksman = marksman;
+            ViewBag.medicine = medicine;
+            ViewBag.science = science;
+            ViewBag.subterfuge = subterfuge;
+            ViewBag.survival = survival;
+            ViewBag.technology = technology;
+            ViewBag.transport = transport;
+
             return View();
         }
 
         //Save selected values to session upon submitting attributes
         [HttpPost]
         [Route("attributes")]
-        public IActionResult Attributes(int Awareness, int Coordination, int Ingenuity, int Presence, int Resolve, int Strength)
-        {
+        public IActionResult Attributes(int Awareness, int Coordination, int Ingenuity, int Presence, int Resolve, int Strength){
             HttpContext.Session.SetInt32("Awareness", Awareness);
             HttpContext.Session.SetInt32("Coordination", Coordination);
             HttpContext.Session.SetInt32("Ingenuity", Ingenuity);
@@ -97,15 +142,198 @@ namespace AiTaS.Controllers
             return RedirectToAction("Index");
         }
 
-        // [HttpPost]
-        // [Route("plus")]
-        // public IActionResult Plus()
-        // {
-        //     int athletics = ViewBag.athletics;
-        //     athletics += 1;
-        //     ViewBag.athletics = athletics;
-        //     return RedirectToAction("Index");
-        // }
+        [HttpPost]
+        [Route("athletics")]
+        public IActionResult Athletics(string athletics){
+            int athleticsval = Convert.ToInt32(HttpContext.Session.GetInt32("Athletics"));
+            if(athletics == "minus"){
+                if(athleticsval > 0){
+                    athleticsval -= 1;
+                }
+            }
+            if(athletics == "plus"){
+                athleticsval += 1;
+            }
+            HttpContext.Session.SetInt32("Athletics", athleticsval);
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        [Route("convince")]
+        public IActionResult Convince(string convince){
+            int convinceval = Convert.ToInt32(HttpContext.Session.GetInt32("Convince"));
+            if(convince == "minus"){
+                if(convinceval > 0){
+                    convinceval -= 1;
+                }
+            }
+            if(convince == "plus"){
+                convinceval += 1;
+            }
+            HttpContext.Session.SetInt32("Convince", convinceval);
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        [Route("craft")]
+        public IActionResult Craft(string craft){
+            int craftval = Convert.ToInt32(HttpContext.Session.GetInt32("Craft"));
+            if(craft == "minus"){
+                if(craftval > 0){
+                    craftval -= 1;
+                }
+            }
+            if(craft == "plus"){
+                craftval += 1;
+            }
+            HttpContext.Session.SetInt32("Craft", craftval);
+            return RedirectToAction("Index");
+        }
+        
+        [HttpPost]
+        [Route("fighting")]
+        public IActionResult Fighting(string fighting){
+            int fightingval = Convert.ToInt32(HttpContext.Session.GetInt32("Fighting"));
+            if(fighting == "minus"){
+                if(fightingval > 0){
+                    fightingval -= 1;
+                }
+            }
+            if(fighting == "plus"){
+                fightingval += 1;
+            }
+            HttpContext.Session.SetInt32("Fighting", fightingval);
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        [Route("knowledge")]
+        public IActionResult Knowledge(string knowledge){
+            int knowledgeval = Convert.ToInt32(HttpContext.Session.GetInt32("Knowledge"));
+            if(knowledge == "minus"){
+                if(knowledgeval > 0){
+                    knowledgeval -= 1;
+                }
+            }
+            if(knowledge == "plus"){
+                knowledgeval += 1;
+            }
+            HttpContext.Session.SetInt32("Knowledge", knowledgeval);
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        [Route("marksman")]
+        public IActionResult Marksman(string marksman){
+            int marksmanval = Convert.ToInt32(HttpContext.Session.GetInt32("Marksman"));
+            if(marksman == "minus"){
+                if(marksmanval > 0){
+                    marksmanval -= 1;
+                }
+            }
+            if(marksman == "plus"){
+                marksmanval += 1;
+            }
+            HttpContext.Session.SetInt32("Marksman", marksmanval);
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        [Route("medicine")]
+        public IActionResult Medicine(string medicine){
+            int medicineval = Convert.ToInt32(HttpContext.Session.GetInt32("Medicine"));
+            if(medicine == "minus"){
+                if(medicineval > 0){
+                    medicineval -= 1;
+                }
+            }
+            if(medicine == "plus"){
+                medicineval += 1;
+            }
+            HttpContext.Session.SetInt32("Medicine", medicineval);
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        [Route("science")]
+        public IActionResult Science(string science){
+            int scienceval = Convert.ToInt32(HttpContext.Session.GetInt32("Science"));
+            if(science == "minus"){
+                if(scienceval > 0){
+                    scienceval -= 1;
+                }
+            }
+            if(science == "plus"){
+                scienceval += 1;
+            }
+            HttpContext.Session.SetInt32("Science", scienceval);
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        [Route("subterfuge")]
+        public IActionResult Subterfuge(string subterfuge){
+            int subterfugeval = Convert.ToInt32(HttpContext.Session.GetInt32("Subterfuge"));
+            if(subterfuge == "minus"){
+                if(subterfugeval > 0){
+                    subterfugeval -= 1;
+                }
+            }
+            if(subterfuge == "plus"){
+                subterfugeval += 1;
+            }
+            HttpContext.Session.SetInt32("Subterfuge", subterfugeval);
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        [Route("survival")]
+        public IActionResult Survival(string survival){
+            int survivalval = Convert.ToInt32(HttpContext.Session.GetInt32("Survival"));
+            if(survival == "minus"){
+                if(survivalval > 0){
+                    survivalval -= 1;
+                }
+            }
+            if(survival == "plus"){
+                survivalval += 1;
+            }
+            HttpContext.Session.SetInt32("Survival", survivalval);
+            return RedirectToAction("Index");
+        }
+        
+        [HttpPost]
+        [Route("technology")]
+        public IActionResult Technology(string technology){
+            int technologyval = Convert.ToInt32(HttpContext.Session.GetInt32("Technology"));
+            if(technology == "minus"){
+                if(technologyval > 0){
+                    technologyval -= 1;
+                }
+            }
+            if(technology == "plus"){
+                technologyval += 1;
+            }
+            HttpContext.Session.SetInt32("Technology", technologyval);
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        [Route("transport")]
+        public IActionResult Transport(string transport){
+            int transportval = Convert.ToInt32(HttpContext.Session.GetInt32("Transport"));
+            if(transport == "minus"){
+                if(transportval > 0){
+                    transportval -= 1;
+                }
+            }
+            if(transport == "plus"){
+                transportval += 1;
+            }
+            HttpContext.Session.SetInt32("Transport", transportval);
+            return RedirectToAction("Index");
+        }
+        
         public void AwarenessConvert(int Awareness){
             ViewBag.AwarenessButtons += "<br><input type='radio' name='Awareness' value='1'";
             if(Awareness == 1){
