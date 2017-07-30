@@ -8,6 +8,7 @@ namespace AiTaS.Controllers
 {
     public class HomeController : Controller
     {
+
         // GET: /Home/
         [HttpGet]
         [Route("")]
