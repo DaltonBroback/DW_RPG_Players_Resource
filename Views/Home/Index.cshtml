@@ -4,133 +4,146 @@
 <h1>Doctor Who RPG: Adventures in Time and Space</h1>
 <h2>Players Resource</h2>
 
-<div class = "CharacterSheet">
-    <p>
-    Character Points: @ViewBag.charP<br>
-    Skill Points: @ViewBag.skillP<br>
-    Max Story Points: @ViewBag.storyP<br>
-    </p>
-
-    <h3>Biodata</h3>
-    <p>Name:</p>
-    <h4>Description</h4>
-    <p>Personal Goal:<br>
-    Peronality:<br>
-    Background:</p>
-    <h3>Attributes</h3>
-     <form action = "attributes" method = "post"> 
-    <p>Awareness: 
-        @ViewBag.Awareness
-        @Html.Raw(@ViewBag.AwarenessButtons)
-    Coordination:
-        @ViewBag.Coordination
-        @Html.Raw(@ViewBag.CoordinationButtons)
-    Ingenuity:
-        @ViewBag.Ingenuity
-        @Html.Raw(@ViewBag.IngenuityButtons)
-    Presence:
-        @ViewBag.Presence
-        @Html.Raw(@ViewBag.PresenceButtons)
-
-    Resolve:
-         @ViewBag.Resolve
-        @Html.Raw(@ViewBag.ResolveButtons)
-
-    Strength:
-        @ViewBag.Strength
-        @Html.Raw(@ViewBag.StrengthButtons)
-
-    </p>
-     <button type="submit">Submit</button><br> 
-     </form> 
-    <h3>Skills</h3>
+<div id = "CharacterSheet">
+    <div id = "BasicInfo"
         <p>
-    <form action = "athletics" method = "post">
-        Athletics: 
-        <button action = "submit" name = "athletics" value = "minus">-</button>
-        @ViewBag.athletics 
-        <button action = "submit" name = "athletics" value = "plus">+</button>
-        <br> 
-    </form>
-    <form action = "convince" method = "post">
-        Convince: 
-        <button action = "submit" name = "convince" value = "minus">-</button>
-        @ViewBag.convince 
-        <button action = "submit" name = "convince" value = "plus">+</button>
-        <br> 
-    </form>
-    <form action = "craft" method = "post">
-        Craft: 
-        <button action = "submit" name = "craft" value = "minus">-</button>
-        @ViewBag.craft 
-        <button action = "submit" name = "craft" value = "plus">+</button>
-        <br> 
-    </form>      
-    <form action = "fighting" method = "post">
-        Fighting:      
-        <button action = "submit" name = "fighting" value = "minus">-</button>
-        @ViewBag.fighting 
-        <button action = "submit" name = "fighting" value = "plus">+</button>
-        <br> 
-    </form>    
-    <form action = "knowledge" method = "post">
-        Knowledge:      
-        <button action = "submit" name = "knowledge" value = "minus">-</button>
-        @ViewBag.knowledge 
-        <button action = "submit" name = "knowledge" value = "plus">+</button>
-        <br> 
-    </form>    
-    <form action = "marksman" method = "post">
-        Marskman:       
-        <button action = "submit" name = "marksman" value = "minus">-</button>
-        @ViewBag.marksman 
-        <button action = "submit" name = "marksman" value = "plus">+</button>
-        <br> 
-    </form>  
-    <form action = "medicine" method = "post">
-        Medicine:       
-        <button action = "submit" name = "medicine" value = "minus">-</button>
-        @ViewBag.medicine 
-        <button action = "submit" name = "medicine" value = "plus">+</button>
-        <br> 
-    </form>  
-    <form action = "science" method = "post">
-        Science:       
-        <button action = "submit" name = "science" value = "minus">-</button>
-        @ViewBag.science 
-        <button action = "submit" name = "science" value = "plus">+</button>
-        <br> 
-    </form>  
-    <form action = "subterfuge" method = "post">
-         Subterfuge:       
-        <button action = "submit" name = "subterfuge" value = "minus">-</button>
-        @ViewBag.subterfuge 
-        <button action = "submit" name = "subterfuge" value = "plus">+</button>
-        <br> 
-    </form>  
-    <form action = "survival" method = "post">
-        Survival:
-        <button action = "submit" name = "survival" value = "minus">-</button>
-        @ViewBag.survival 
-        <button action = "submit" name = "survival" value = "plus">+</button>
-        <br> 
-    </form>  
-    <form action = "technology" method = "post">
-        Technology:
-        <button action = "submit" name = "technology" value = "minus">-</button>
-        @ViewBag.technology 
-        <button action = "submit" name = "technology" value = "plus">+</button>
-        <br> 
-    </form>  
-    <form action = "transport" method = "post">
-        Transport:
-        <button action = "submit" name = "transport" value = "minus">-</button>
-        @ViewBag.transport 
-        <button action = "submit" name = "transport" value = "plus">+</button>
-        <br> 
-    </form> 
-    </p> 
+        Character Points: @ViewBag.charP<br>
+        Skill Points: @ViewBag.skillP<br>
+        Max Story Points: @ViewBag.storyP<br>
+        </p>
+
+        <h3>Biodata</h3>
+        <p>Name:</p>
+        <h4>Description</h4>
+        <p>Personal Goal:<br>
+        Peronality:<br>
+        Background:</p>
+    </div>
+    <div id = "Attributes">
+        <h3>Attributes</h3>
+        <form action = "attributes" method = "post"> 
+        <p>Awareness: 
+            @ViewBag.Awareness
+            @Html.Raw(@ViewBag.AwarenessButtons)
+        Coordination:
+            @ViewBag.Coordination
+            @Html.Raw(@ViewBag.CoordinationButtons)
+        Ingenuity:
+            @ViewBag.Ingenuity
+            @Html.Raw(@ViewBag.IngenuityButtons)
+        Presence:
+            @ViewBag.Presence
+            @Html.Raw(@ViewBag.PresenceButtons)
+
+        Resolve:
+            @ViewBag.Resolve
+            @Html.Raw(@ViewBag.ResolveButtons)
+
+        Strength:
+            @ViewBag.Strength
+            @Html.Raw(@ViewBag.StrengthButtons)
+
+        </p>
+        <button type="submit">Submit</button><br> 
+        </form> 
+    </div>
+    <div id = "Skills">
+        <h3>Skills</h3>
+        <p>
+        <form action = "athletics" method = "post">
+            Athletics: 
+            <button action = "submit" name = "athletics" value = "minus">-</button>
+            @ViewBag.athletics 
+            <button action = "submit" name = "athletics" value = "plus">+</button>
+            <br> 
+        </form>
+        <form action = "convince" method = "post">
+            Convince: 
+            <button action = "submit" name = "convince" value = "minus">-</button>
+            @ViewBag.convince 
+            <button action = "submit" name = "convince" value = "plus">+</button>
+            <br> 
+        </form>
+        <form action = "craft" method = "post">
+            Craft: 
+            <button action = "submit" name = "craft" value = "minus">-</button>
+            @ViewBag.craft 
+            <button action = "submit" name = "craft" value = "plus">+</button>
+            <br> 
+        </form>      
+        <form action = "fighting" method = "post">
+            Fighting:      
+            <button action = "submit" name = "fighting" value = "minus">-</button>
+            @ViewBag.fighting 
+            <button action = "submit" name = "fighting" value = "plus">+</button>
+            <br> 
+        </form>    
+        <form action = "knowledge" method = "post">
+            Knowledge:      
+            <button action = "submit" name = "knowledge" value = "minus">-</button>
+            @ViewBag.knowledge 
+            <button action = "submit" name = "knowledge" value = "plus">+</button>
+            <br> 
+        </form>    
+        <form action = "marksman" method = "post">
+            Marskman:       
+            <button action = "submit" name = "marksman" value = "minus">-</button>
+            @ViewBag.marksman 
+            <button action = "submit" name = "marksman" value = "plus">+</button>
+            <br> 
+        </form>  
+        <form action = "medicine" method = "post">
+            Medicine:       
+            <button action = "submit" name = "medicine" value = "minus">-</button>
+            @ViewBag.medicine 
+            <button action = "submit" name = "medicine" value = "plus">+</button>
+            <br> 
+        </form>  
+        <form action = "science" method = "post">
+            Science:       
+            <button action = "submit" name = "science" value = "minus">-</button>
+            @ViewBag.science 
+            <button action = "submit" name = "science" value = "plus">+</button>
+            <br> 
+        </form>  
+        <form action = "subterfuge" method = "post">
+            Subterfuge:       
+            <button action = "submit" name = "subterfuge" value = "minus">-</button>
+            @ViewBag.subterfuge 
+            <button action = "submit" name = "subterfuge" value = "plus">+</button>
+            <br> 
+        </form>  
+        <form action = "survival" method = "post">
+            Survival:
+            <button action = "submit" name = "survival" value = "minus">-</button>
+            @ViewBag.survival 
+            <button action = "submit" name = "survival" value = "plus">+</button>
+            <br> 
+        </form>  
+        <form action = "technology" method = "post">
+            Technology:
+            <button action = "submit" name = "technology" value = "minus">-</button>
+            @ViewBag.technology 
+            <button action = "submit" name = "technology" value = "plus">+</button>
+            <br> 
+        </form>  
+        <form action = "transport" method = "post">
+            Transport:
+            <button action = "submit" name = "transport" value = "minus">-</button>
+            @ViewBag.transport 
+            <button action = "submit" name = "transport" value = "plus">+</button>
+            <br> 
+        </form> 
+        </p> 
+    </div>
     <h3>Traits</h3>
+    @Html.Raw(@ViewBag.Traits)
+    <form action = "traitSelect" method = "post">
+        <select name = "Trait">
+        @Html.Raw(@ViewBag.TraitSelectors)>
+        </select>
+        <button action = "submit">Add Trait</button>
+    </form>
     <br>
     <h3>Stuff</h3>
     <br>

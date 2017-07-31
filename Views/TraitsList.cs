@@ -1,7 +1,21 @@
 using System.Collections.Generic;
 
-Dictionary<string, string[]> Traits = new Dictionary<string, string[]>
+namespace AiTaS.Controllers
+{
+    public class Traits 
+    {
+        public static Dictionary<string, string[]> TraitsList = new Dictionary<string, string[]>
         {
+            // Trait:
+            //0: Good or bad
+            //1: Minor, Major, or Special
+            //2: Location (ex. Core Book, Second Doctor Sourcebook, Aliens, etc)
+            //3: Whether the trait can only be taken once or stacked
+            //4: Description of trait
+            //5: Effects
+
+            //CORE BOOK TRAITS
+            //Minor Traits (with a few exceptions)
             { "Animal Friendship", new [] { 
                 "good", 
                 "minor", 
@@ -324,6 +338,7 @@ Dictionary<string, string[]> Traits = new Dictionary<string, string[]>
                 "The character has the air of command about them, possibly from being a figure of authority – a doctor, politician, military commander or a police constable – or they may have an aura of intelligence or experience that inspires people to listen and trust their judgement. This is especially handy when trying to clear an area because of some approaching danger, to order people about or simply try to gain their trust.",
                 "This trait provides a +2 bonus to Presence and Convince rolls to try to get people to do as you wish or to gain their trust. The Gamemaster may modify this to suit the situation."} },
 
+            //Major Traits (with a few exceptions)
             { "Adversary (Minor)", new [] { 
                 "bad", 
                 "minor", 
@@ -539,15 +554,7 @@ Dictionary<string, string[]> Traits = new Dictionary<string, string[]>
                 "one time",
                 "The character has done something that has led to a section of society, or an entire race or planet, shunning them or viewing them with fear, dread or loathing. It could be that they’ve offended someone’s beliefs, or committed a crime, or even just made such a fool of themselves that people regard them with complete disdain. They could have spoken out about their extreme scientific belief in aliens and been ridiculed in academic circles, or shunned by the government agency they work for and given an office in the basement.",
                 "Players should discuss with the Gamemaster what the character has done and who regards them with such dislike or dismissal. When anyone that would react negatively to their presence encounters the character, they should make an Awareness + Ingenuity roll to recognise them. If the character is recognised, they’ll suffer a -2 penalty on all social rolls (such as trying to Convince or to even share their knowledge). If the ‘something’ they’ve done is more severe than this, they should take a Major Dark Secret Bad Trait instead."} },
-                
-            { "Outcast", new [] { 
-                "bad", 
-                "minor", 
-                "core book",
-                "one time",
-                "The character has done something that has led to a section of society, or an entire race or planet, shunning them or viewing them with fear, dread or loathing. It could be that they’ve offended someone’s beliefs, or committed a crime, or even just made such a fool of themselves that people regard them with complete disdain. They could have spoken out about their extreme scientific belief in aliens and been ridiculed in academic circles, or shunned by the government agency they work for and given an office in the basement.",
-                "Players should discuss with the Gamemaster what the character has done and who regards them with such dislike or dismissal. When anyone that would react negatively to their presence encounters the character, they should make an Awareness + Ingenuity roll to recognise them. If the character is recognised, they’ll suffer a -2 penalty on all social rolls (such as trying to Convince or to even share their knowledge). If the ‘something’ they’ve done is more severe than this, they should take a Major Dark Secret Bad Trait instead."} },
-
+              
             { "Outsider", new [] { 
                 "bad", 
                 "minor", 
@@ -675,7 +682,8 @@ Dictionary<string, string[]> Traits = new Dictionary<string, string[]>
                 "stackable",
                 "The Weakness trait reflects a single area where the character is susceptible to harm or temptation. This could be anything from an allergy like hay fever or wasp stings (not so good when fighting giant wasps!), to being weak willed and susceptible to mind control, or suffering from occasional - but paralysing - drive glitches.",
                 "The Weakness trait reflects a single area where the character is susceptible to harm or temptation. This could be anything from an allergy like hay fever or wasp stings (not so good when fighting giant wasps!), to being weak willed and susceptible to mind control, or suffering from occasional - but paralysing - drive glitches. Effect: The player should discuss the chosen weakness with the Gamemaster and come to an agreement over the exact nature of this Bad Trait. In most cases, when the character encounters the thing that affects them, any rolls suffer a -2 penalty. In the case of a substance like pollen or stings, the character should suffer a -2 penalty to all actions while they’re within range or exposed to its effects. For example, being stung by a wasp (not a giant Vespiform but a normal-sized one), when allergic to wasp and bee stings will result in suffering a -2 penalty to all actions for at least eight hours (or until an anti-toxin is administered), while he’s feeling weak and groggy from the poisons. Weakness as a Major Trait is best suited for villains and aliens who need a definite exploitable weakness to give the characters a chance against them, such as weakness to acetic acid, or an extreme reaction to water or gold. Major Weaknesses actually cause injury rather than a penalty and exposure to the effective element will actually inflict 4 levels of damage, reducing their attributes (see Injuries, onpg. 85)."} },
-                
+
+            //Special Traits (with a few exceptions)
             { "Alien", new [] { 
                 "good", 
                 "special", 
@@ -831,12 +839,22 @@ Dictionary<string, string[]> Traits = new Dictionary<string, string[]>
 
             { "Vortex (Minor)", new [] { 
                 "good", 
+                "minor", 
+                "core book",
+                "one time",
+                "The Space-time Vortex is a swirling maelstrom that requires great knowledge and skill to navigate. The character may not have access to a TARDIS, Vortex Manipulator or another time travel device, but they have experience in travelling through the Vortex and are familiar with its dangers.",
+                "Vortex is a Special Trait, costing 1 point, and is not for beginning characters (unless they have a background of using a TARDIS or other Vortex Manipulators). Selecting Vortex as a trait at character creation has to be approved by the Gamemaster. The Vortex trait adds +2 to any roll that involves piloting a time travel or Vortex-manipulating device. Controlling the TARDIS (or other such time vessels) is so tricky to the unskilled, that it is almost impossible to actually be able to succeed at the task without having the Vortex trait. An additional ‘level’ of Vortex is available to characters with the Alien trait (see pg. 49), and costs 8 points. This high level of Vortex means the character can time travel without the need of a ship or device, literally stepping through time. This is an Alien trait and is best reserved for Villains or NPCs. To step through time requires an Ingenuity and Resolve Roll to use, and the expenditure of two Story Points. The more successful the roll, the more accurate the ‘jump’."} },
+            
+            { "Vortex (Special)", new [] { 
+                "good", 
                 "special", 
                 "core book",
                 "one time",
                 "The Space-time Vortex is a swirling maelstrom that requires great knowledge and skill to navigate. The character may not have access to a TARDIS, Vortex Manipulator or another time travel device, but they have experience in travelling through the Vortex and are familiar with its dangers.",
                 "Vortex is a Special Trait, costing 1 point, and is not for beginning characters (unless they have a background of using a TARDIS or other Vortex Manipulators). Selecting Vortex as a trait at character creation has to be approved by the Gamemaster. The Vortex trait adds +2 to any roll that involves piloting a time travel or Vortex-manipulating device. Controlling the TARDIS (or other such time vessels) is so tricky to the unskilled, that it is almost impossible to actually be able to succeed at the task without having the Vortex trait. An additional ‘level’ of Vortex is available to characters with the Alien trait (see pg. 49), and costs 8 points. This high level of Vortex means the character can time travel without the need of a ship or device, literally stepping through time. This is an Alien trait and is best reserved for Villains or NPCs. To step through time requires an Ingenuity and Resolve Roll to use, and the expenditure of two Story Points. The more successful the roll, the more accurate the ‘jump’."} },
 
+            //ALIEN TRAITS - For testing purposes
+            //TODO: Finish adding remaining skills
             { "Additional Limbs", new [] { 
                 "good", 
                 "special", 
@@ -844,4 +862,8 @@ Dictionary<string, string[]> Traits = new Dictionary<string, string[]>
                 "stackable",
                 "Many hands make light work, or so they say (though try saying that to Alexander Monro). Taking this trait means that the alien has an additional pair of limbs. This can mean arms or legs or an odd alien limb or tentacle that functions as both. Of course, taking an additional pair of limbs means that the character is usually very obviously an alien in appearance, and will automatically get the Alien Appearance Bad Trait (Minor). The Additional Limbs trait can be taken a second time, giving the alien a cumulative bonus, but their Alien Appearance trait becomes Major.",
                 "Additional Limbs is a Minor Good Alien Trait, and costs just 1 point for every additional pair of limbs. If the alien has additional legs, their effective Speed (when calculating chases and alike) is increased by +2. If the limbs are arms, the first additional action in any action round receives no penalty (as they can effectively do two things at once). This trait can be taken twice to create an eight limbed alien, though they will be obviously more alien. Additional limbs can be had on top of this, but they receive no bonus and cost no extra – there comes a point when you have so many legs or arms that it just becomes confusing and you can end up tripping over your own feet."} },
+
+            //TODO: Add traits from other expansions
         };
+    }
+}

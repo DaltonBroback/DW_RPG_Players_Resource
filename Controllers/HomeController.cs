@@ -3,17 +3,23 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using AiTaS;
 
 namespace AiTaS.Controllers
 {
     public class HomeController : Controller
     {
 
+        public static Traits traits = new Traits();
+
+        // private readonly Traits Traits;
+
         // GET: /Home/
         [HttpGet]
         [Route("")]
         public IActionResult Index()
         {
+
             //Default starting values
             int charP = 24;
             int skillP = 18;
@@ -98,6 +104,16 @@ namespace AiTaS.Controllers
                     skillP -= 1;
                     skillPool -= 1;
                 }
+            }
+
+            //*************************************************
+            //Traits
+            //*************************************************
+
+            ViewBag.Traits = 
+            ViewBag.TraitSelectors = HttpContext.Session.GetString("Traits");;
+            foreach(var trait in Traits.TraitsList){
+                ViewBag.TraitSelectors += "<option value='"+trait.Key+"'>"+trait.Key+"</option>";
             }
 
             //Total Points
@@ -335,6 +351,15 @@ namespace AiTaS.Controllers
             return RedirectToAction("Index");
         }
         
+        [HttpPost]
+        [Route("traitSelect")]
+        public IActionResult TraitSelect(string Trait){
+            string TraitStr = HttpContext.Session.GetString("Traits");
+            TraitStr += Trait+"<br>";
+            HttpContext.Session.SetString("Traits", TraitStr);
+            return RedirectToAction("Index");
+        }
+
         public void AwarenessConvert(int Awareness){
             ViewBag.AwarenessButtons += "<br><input type='radio' name='Awareness' value='1'";
             if(Awareness == 1){
