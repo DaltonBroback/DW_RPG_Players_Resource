@@ -74,9 +74,7 @@ namespace AiTaS.Controllers
             }
             StrengthConvert(Strength);
             
-            //Remove attribute values from character points
-            charP = 24 - Awareness - Coordination - Ingenuity - Presence - Resolve - Strength;
-
+        
             //*************************************************
             //Skills
             //*************************************************
@@ -93,6 +91,49 @@ namespace AiTaS.Controllers
             int technology = Convert.ToInt32(HttpContext.Session.GetInt32("Technology"));
             int transport = Convert.ToInt32(HttpContext.Session.GetInt32("Transport"));
 
+            //*************************************************
+            //Traits
+            //*************************************************
+
+            string CurrentTraitName = HttpContext.Session.GetString("CurrentTrait");
+            @ViewBag.TraitName = CurrentTraitName;
+            try{
+                @ViewBag.TraitAllign = Traits.TraitsList[CurrentTraitName][0];
+                @ViewBag.TraitVal = Traits.TraitsList[CurrentTraitName][1];
+                @ViewBag.TraitDesc = Traits.TraitsList[CurrentTraitName][4];
+                @ViewBag.TraitEffect = "<br><b>Effects: </b>"+Traits.TraitsList[CurrentTraitName][5];
+            }
+            catch{
+                @ViewBag.TraitAllign = "";
+                @ViewBag.TraitVal = "";
+                @ViewBag.TraitDesc = "";            
+                @ViewBag.TraitEffect = "";            
+            }
+
+            ViewBag.Traits = HttpContext.Session.GetString("Traits");
+            ViewBag.TraitSelectors = "";
+            foreach(var trait in Traits.TraitsList){
+                ViewBag.TraitSelectors += "<option value='"+trait.Key+"'>"+trait.Key+"</option>";
+            }
+
+            //TODO: Complete functionality for spending character points on traits
+                // int traitP = 0;
+                // if(trait.Value[1] == "Minor"){
+                //     traitP = 1;
+                // }
+                // if(trait.Value[1] == "Major"){
+                //     traitP = 2;
+                // }
+                // if(trait.Value[0] == "Good"){
+                //     traitPool += traitP;
+                // }
+                // else{
+                //     traitPool -= traitP;
+                // }
+
+
+            //Remove attribute and trait values from character points
+            charP = 24 - Awareness - Coordination - Ingenuity - Presence - Resolve - Strength;
             int skillPool = athletics + convince + craft + fighting + knowledge + marksman + medicine + science + subterfuge + survival + technology + transport;
 
             while(charP > 0 && skillPool > 0){
@@ -105,17 +146,6 @@ namespace AiTaS.Controllers
                     skillPool -= 1;
                 }
             }
-
-            //*************************************************
-            //Traits
-            //*************************************************
-
-            ViewBag.Traits = 
-            ViewBag.TraitSelectors = HttpContext.Session.GetString("Traits");;
-            foreach(var trait in Traits.TraitsList){
-                ViewBag.TraitSelectors += "<option value='"+trait.Key+"'>"+trait.Key+"</option>";
-            }
-
             //Total Points
             ViewBag.charP = charP;
             ViewBag.skillP = skillP;
@@ -354,11 +384,21 @@ namespace AiTaS.Controllers
         [HttpPost]
         [Route("traitSelect")]
         public IActionResult TraitSelect(string Trait){
+            HttpContext.Session.SetString("CurrentTrait", Trait);
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        [Route("traitAdd")]
+        public IActionResult TraitAdd(){
+            string TraitName = HttpContext.Session.GetString("CurrentTrait");
             string TraitStr = HttpContext.Session.GetString("Traits");
-            TraitStr += Trait+"<br>";
+            TraitStr += "<li>"+TraitName+"</li>";
             HttpContext.Session.SetString("Traits", TraitStr);
             return RedirectToAction("Index");
         }
+
+
 
         public void AwarenessConvert(int Awareness){
             ViewBag.AwarenessButtons += "<br><input type='radio' name='Awareness' value='1'";
