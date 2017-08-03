@@ -107,19 +107,17 @@ namespace AiTaS.Controllers
                 @ViewBag.TraitDesc = "";            
                 @ViewBag.TraitEffect = "";            
             }
-            //NOTE: If the following code doesn't break soon, remove the following line
-            // ViewBag.Traits = HttpContext.Session.GetString("Traits");
+
             ViewBag.Traits = "";
             ViewBag.TraitSelectors = "";
             foreach(var trait in Traits.TraitsList){
                 ViewBag.TraitSelectors += "<option value='"+trait.Key+"'>"+trait.Key+"</option>";
             }
 
-            // TODO: Complete functionality for spending character points on traits
             int traitPool = 0;
             foreach(var trait in Traits.PlayerTraits){
                 int traitP = 0;
-                ViewBag.Traits += "<li>"+trait.Key+"</li>";
+                ViewBag.Traits += "<li>"+trait.Key+"<form action ='traitDisplay' method = 'post'> <button action = 'submit' name = 'trait' value ='"+trait.Key+"'>View Details</button></form><form action ='traitRemove' method = 'post'><button action = 'submit' name = 'trait' value ='"+trait.Key+"'>Remove</button></form></li>";
                 if(trait.Value[1] == "Minor"){
                     traitP = 1;
                 }
@@ -133,6 +131,8 @@ namespace AiTaS.Controllers
                     traitPool -= traitP;
                 }
             }
+            ViewBag.TraitError = HttpContext.Session.GetString("TraitError");
+            HttpContext.Session.SetString("TraitError", "");
 
             //Remove attribute and trait values from character points
             charP = 24 - Awareness - Coordination - Ingenuity - Presence - Resolve - Strength - traitPool;
@@ -385,26 +385,37 @@ namespace AiTaS.Controllers
         
         [HttpPost]
         [Route("traitSelect")]
-        public IActionResult TraitSelect(string Trait){
-            HttpContext.Session.SetString("CurrentTrait", Trait);
+        public IActionResult TraitSelect(string trait){
+            HttpContext.Session.SetString("CurrentTrait", trait);
+            return RedirectToAction("Index");
+        }
+        [HttpPost]
+        [Route("traitDisplay")]
+        public IActionResult TraitDisplay(string trait){
+            TraitSelect(trait);
             return RedirectToAction("Index");
         }
 
-        //NOTE: If the following code doesn't break soon, remove the dummied lines
         
         [HttpPost]
         [Route("traitAdd")]
         public IActionResult TraitAdd(){
             string TraitName = HttpContext.Session.GetString("CurrentTrait");
-            // string TraitStr = HttpContext.Session.GetString("Traits");
             try{
             Traits.PlayerTraits.Add(TraitName, new [] {Traits.TraitsList[TraitName][0],Traits.TraitsList[TraitName][1],Traits.TraitsList[TraitName][2],Traits.TraitsList[TraitName][3],Traits.TraitsList[TraitName][4]});
             }
             catch{
                 //INSERT: Error code
+                string traitError = "Trait '"+TraitName+"' cannot be taken more than once";
+                HttpContext.Session.SetString("TraitError", traitError);
             }
-            // TraitStr += "<li>"+TraitName+"</li>";
-            // HttpContext.Session.SetString("Traits", TraitStr);
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        [Route("traitRemove")]
+        public IActionResult TraitRemove(string trait){
+            Traits.PlayerTraits.Remove(trait);
             return RedirectToAction("Index");
         }
 

@@ -137,14 +137,15 @@
         </p> 
     </div>
     <h3>Traits</h3>
+    <b>@ViewBag.TraitError</b>
     <ul>
     @Html.Raw(@ViewBag.Traits)
     </ul>
-    <form action = "traitSelect" method = "post">
-        <select name = "Trait">
+    <form action = 'traitSelect' method = 'post'>
+        <select name = 'trait'>
         @Html.Raw(@ViewBag.TraitSelectors)>
         </select>
-        <button action = "submit">Select Trait</button>
+        <button action = 'submit'>Select Trait</button>
     </form>
     <p><b> @ViewBag.TraitName </b><br>
     <em>@ViewBag.TraitVal @ViewBag.TraitAllign</em><br>
