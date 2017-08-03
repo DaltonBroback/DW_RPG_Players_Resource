@@ -8,6 +8,10 @@ namespace AiTaS.Controllers
         {
             
         };
+        public static Dictionary<string, string[]> SortedTraits = new Dictionary<string, string[]>
+        {
+
+        };
 
         public static Dictionary<string, string[]> TraitsList = new Dictionary<string, string[]>
         {

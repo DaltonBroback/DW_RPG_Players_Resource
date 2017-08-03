@@ -110,8 +110,9 @@ namespace AiTaS.Controllers
 
             ViewBag.Traits = "";
             ViewBag.TraitSelectors = "";
-            foreach(var trait in Traits.TraitsList){
+            foreach(var trait in Traits.SortedTraits){
                 ViewBag.TraitSelectors += "<option value='"+trait.Key+"'>"+trait.Key+"</option>";
+                Console.WriteLine(trait.Key);
             }
 
             int traitPool = 0;
@@ -405,7 +406,6 @@ namespace AiTaS.Controllers
             Traits.PlayerTraits.Add(TraitName, new [] {Traits.TraitsList[TraitName][0],Traits.TraitsList[TraitName][1],Traits.TraitsList[TraitName][2],Traits.TraitsList[TraitName][3],Traits.TraitsList[TraitName][4]});
             }
             catch{
-                //INSERT: Error code
                 string traitError = "Trait '"+TraitName+"' cannot be taken more than once";
                 HttpContext.Session.SetString("TraitError", traitError);
             }
@@ -418,8 +418,153 @@ namespace AiTaS.Controllers
             Traits.PlayerTraits.Remove(trait);
             return RedirectToAction("Index");
         }
-
-
+        [HttpPost]
+        [Route("traitSort")]
+        public IActionResult TraitSort(string good, string bad, string minor, string major, string special, string core, string coreAlien){
+            Traits.SortedTraits.Clear();
+            foreach(var trait in Traits.TraitsList){
+                if(good == "checked" && trait.Value[0] == "Good"){
+                    if(minor == "checked" && trait.Value[1] == "Minor"){
+                        if(core == "checked" && trait.Value[2] == "core book"){
+                            Traits.SortedTraits.Add(trait.Key, new [] {trait.Value[0],trait.Value[1],trait.Value[2],trait.Value[3],trait.Value[4]});
+                        }
+                        if(coreAlien == "checked" && trait.Value[2] == "core book (aliens"){
+                            Traits.SortedTraits.Add(trait.Key, new [] {trait.Value[0],trait.Value[1],trait.Value[2],trait.Value[3],trait.Value[4]});
+                        }
+                        // if(core != "checked" && coreAlien != "checked"){
+                        //     Traits.SortedTraits.Add(trait.Key, new [] {trait.Value[0],trait.Value[1],trait.Value[2],trait.Value[3],trait.Value[4]});
+                        // }
+                    }
+                    if(major == "checked" && trait.Value[1] == "Major"){
+                        if(core == "checked" && trait.Value[2] == "core book"){
+                            Traits.SortedTraits.Add(trait.Key, new [] {trait.Value[0],trait.Value[1],trait.Value[2],trait.Value[3],trait.Value[4]});
+                        }
+                        if(coreAlien == "checked" && trait.Value[2] == "core book (aliens)"){
+                            Traits.SortedTraits.Add(trait.Key, new [] {trait.Value[0],trait.Value[1],trait.Value[2],trait.Value[3],trait.Value[4]});
+                        }
+                        // if(core != "checked" && coreAlien != "checked"){
+                        //     Traits.SortedTraits.Add(trait.Key, new [] {trait.Value[0],trait.Value[1],trait.Value[2],trait.Value[3],trait.Value[4]});
+                        // }
+                    }
+                    if(special == "checked" && trait.Value[1] == "Special"){
+                        if(core == "checked" && trait.Value[2] == "core book"){
+                            Traits.SortedTraits.Add(trait.Key, new [] {trait.Value[0],trait.Value[1],trait.Value[2],trait.Value[3],trait.Value[4]});
+                        }
+                        if(coreAlien == "checked" && trait.Value[2] == "core book (aliens)"){
+                            Traits.SortedTraits.Add(trait.Key, new [] {trait.Value[0],trait.Value[1],trait.Value[2],trait.Value[3],trait.Value[4]});
+                        }
+                        // if(core != "checked" && coreAlien != "checked"){
+                        //     Traits.SortedTraits.Add(trait.Key, new [] {trait.Value[0],trait.Value[1],trait.Value[2],trait.Value[3],trait.Value[4]});
+                        // }
+                    }
+                    if(minor != "checked" && major != "checked" && special != "checked"){
+                        if(core == "checked" && trait.Value[2] == "core book"){
+                            Traits.SortedTraits.Add(trait.Key, new [] {trait.Value[0],trait.Value[1],trait.Value[2],trait.Value[3],trait.Value[4]});
+                        }
+                        if(coreAlien == "checked" && trait.Value[2] == "core book (aliens)"){
+                            Traits.SortedTraits.Add(trait.Key, new [] {trait.Value[0],trait.Value[1],trait.Value[2],trait.Value[3],trait.Value[4]});
+                        }
+                        // if(core != "checked" && coreAlien != "checked"){
+                        //     Traits.SortedTraits.Add(trait.Key, new [] {trait.Value[0],trait.Value[1],trait.Value[2],trait.Value[3],trait.Value[4]});
+                        // }
+                    }
+                }
+                if(bad == "checked" && trait.Value[0] == "Bad"){
+                    if(minor == "checked" && trait.Value[1] == "Minor"){
+                        if(core == "checked" && trait.Value[2] == "core book"){
+                            Traits.SortedTraits.Add(trait.Key, new [] {trait.Value[0],trait.Value[1],trait.Value[2],trait.Value[3],trait.Value[4]});
+                        }
+                        if(coreAlien == "checked" && trait.Value[2] == "core book (aliens)"){
+                            Traits.SortedTraits.Add(trait.Key, new [] {trait.Value[0],trait.Value[1],trait.Value[2],trait.Value[3],trait.Value[4]});
+                        }
+                        // if(core != "checked" && coreAlien != "checked"){
+                        //     Traits.SortedTraits.Add(trait.Key, new [] {trait.Value[0],trait.Value[1],trait.Value[2],trait.Value[3],trait.Value[4]});
+                        // }
+                    }
+                    if(major == "checked" && trait.Value[1] == "Major"){
+                        if(core == "checked" && trait.Value[2] == "core book"){
+                            Traits.SortedTraits.Add(trait.Key, new [] {trait.Value[0],trait.Value[1],trait.Value[2],trait.Value[3],trait.Value[4]});
+                        }
+                        if(coreAlien == "checked" && trait.Value[2] == "core book (aliens)"){
+                            Traits.SortedTraits.Add(trait.Key, new [] {trait.Value[0],trait.Value[1],trait.Value[2],trait.Value[3],trait.Value[4]});
+                        }
+                        // if(core != "checked" && coreAlien != "checked"){
+                        //     Traits.SortedTraits.Add(trait.Key, new [] {trait.Value[0],trait.Value[1],trait.Value[2],trait.Value[3],trait.Value[4]});
+                        // }
+                    }
+                    if(special == "checked" && trait.Value[1] == "Special"){
+                        if(core == "checked" && trait.Value[2] == "core book"){
+                            Traits.SortedTraits.Add(trait.Key, new [] {trait.Value[0],trait.Value[1],trait.Value[2],trait.Value[3],trait.Value[4]});
+                        }
+                        if(coreAlien == "checked" && trait.Value[2] == "core book (aliens)"){
+                            Traits.SortedTraits.Add(trait.Key, new [] {trait.Value[0],trait.Value[1],trait.Value[2],trait.Value[3],trait.Value[4]});
+                        }
+                        // if(core != "checked" && coreAlien != "checked"){
+                        //     Traits.SortedTraits.Add(trait.Key, new [] {trait.Value[0],trait.Value[1],trait.Value[2],trait.Value[3],trait.Value[4]});
+                        // }
+                    }
+                    if(minor != "checked" && major != "checked" && special != "checked"){
+                        if(core == "checked" && trait.Value[2] == "core book"){
+                            Traits.SortedTraits.Add(trait.Key, new [] {trait.Value[0],trait.Value[1],trait.Value[2],trait.Value[3],trait.Value[4]});
+                        }
+                        if(coreAlien == "checked" && trait.Value[2] == "core book (aliens)"){
+                            Traits.SortedTraits.Add(trait.Key, new [] {trait.Value[0],trait.Value[1],trait.Value[2],trait.Value[3],trait.Value[4]});
+                        }
+                        // if(core != "checked" && coreAlien != "checked"){
+                        //     Traits.SortedTraits.Add(trait.Key, new [] {trait.Value[0],trait.Value[1],trait.Value[2],trait.Value[3],trait.Value[4]});
+                        // }
+                    }
+                }
+                // if(good != "checked" && bad != "checked"){
+                //     if(minor == "checked" && trait.Value[1] == "Minor"){
+                //         if(core == "checked" && trait.Value[2] == "core book"){
+                //             Traits.SortedTraits.Add(trait.Key, new [] {trait.Value[0],trait.Value[1],trait.Value[2],trait.Value[3],trait.Value[4]});
+                //         }
+                //         if(coreAlien == "checked" && trait.Value[2] == "core book (aliens"){
+                //             Traits.SortedTraits.Add(trait.Key, new [] {trait.Value[0],trait.Value[1],trait.Value[2],trait.Value[3],trait.Value[4]});
+                //         }
+                //         if(core != "checked" && coreAlien != "checked"){
+                //             Traits.SortedTraits.Add(trait.Key, new [] {trait.Value[0],trait.Value[1],trait.Value[2],trait.Value[3],trait.Value[4]});
+                //         }
+                //     }
+                //     if(major == "checked" && trait.Value[1] == "Major"){
+                //         if(core == "checked" && trait.Value[2] == "core book"){
+                //             Traits.SortedTraits.Add(trait.Key, new [] {trait.Value[0],trait.Value[1],trait.Value[2],trait.Value[3],trait.Value[4]});
+                //         }
+                //         if(coreAlien == "checked" && trait.Value[2] == "core book (aliens"){
+                //             Traits.SortedTraits.Add(trait.Key, new [] {trait.Value[0],trait.Value[1],trait.Value[2],trait.Value[3],trait.Value[4]});
+                //         }
+                //         if(core != "checked" && coreAlien != "checked"){
+                //             Traits.SortedTraits.Add(trait.Key, new [] {trait.Value[0],trait.Value[1],trait.Value[2],trait.Value[3],trait.Value[4]});
+                //         }
+                //     }
+                //     if(special == "checked" && trait.Value[1] == "Special"){
+                //         if(core == "checked" && trait.Value[2] == "core book"){
+                //             Traits.SortedTraits.Add(trait.Key, new [] {trait.Value[0],trait.Value[1],trait.Value[2],trait.Value[3],trait.Value[4]});
+                //         }
+                //         if(coreAlien == "checked" && trait.Value[2] == "core book (aliens"){
+                //             Traits.SortedTraits.Add(trait.Key, new [] {trait.Value[0],trait.Value[1],trait.Value[2],trait.Value[3],trait.Value[4]});
+                //         }
+                //         if(core != "checked" && coreAlien != "checked"){
+                //             Traits.SortedTraits.Add(trait.Key, new [] {trait.Value[0],trait.Value[1],trait.Value[2],trait.Value[3],trait.Value[4]});
+                //         }
+                //     }
+                //     if(minor != "checked" && major != "checked" && special != "checked"){
+                //         if(core == "checked" && trait.Value[2] == "core book"){
+                //             Traits.SortedTraits.Add(trait.Key, new [] {trait.Value[0],trait.Value[1],trait.Value[2],trait.Value[3],trait.Value[4]});
+                //         }
+                //         if(coreAlien == "checked" && trait.Value[2] == "core book (aliens"){
+                //             Traits.SortedTraits.Add(trait.Key, new [] {trait.Value[0],trait.Value[1],trait.Value[2],trait.Value[3],trait.Value[4]});
+                //         }
+                //         if(core != "checked" && coreAlien != "checked"){
+                //             Traits.SortedTraits.Add(trait.Key, new [] {trait.Value[0],trait.Value[1],trait.Value[2],trait.Value[3],trait.Value[4]});
+                //         }
+                //     }
+                // }
+            }
+            return RedirectToAction("Index");
+        }
+        
         public void AwarenessConvert(int Awareness){
             ViewBag.AwarenessButtons += "<br><input type='radio' name='Awareness' value='1'";
             if(Awareness == 1){
