@@ -4,6 +4,11 @@ namespace AiTaS.Controllers
 {
     public class Traits 
     {
+        public static Dictionary<string, string[]> PlayerTraits = new Dictionary<string, string[]>
+        {
+            
+        };
+
         public static Dictionary<string, string[]> TraitsList = new Dictionary<string, string[]>
         {
             // Trait:

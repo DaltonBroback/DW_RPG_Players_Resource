@@ -9,7 +9,6 @@ namespace AiTaS.Controllers
 {
     public class HomeController : Controller
     {
-
         public static Traits traits = new Traits();
 
         // private readonly Traits Traits;
@@ -19,7 +18,6 @@ namespace AiTaS.Controllers
         [Route("")]
         public IActionResult Index()
         {
-
             //Default starting values
             int charP = 24;
             int skillP = 18;
@@ -109,31 +107,35 @@ namespace AiTaS.Controllers
                 @ViewBag.TraitDesc = "";            
                 @ViewBag.TraitEffect = "";            
             }
-
-            ViewBag.Traits = HttpContext.Session.GetString("Traits");
+            //NOTE: If the following code doesn't break soon, remove the following line
+            // ViewBag.Traits = HttpContext.Session.GetString("Traits");
+            ViewBag.Traits = "";
             ViewBag.TraitSelectors = "";
             foreach(var trait in Traits.TraitsList){
                 ViewBag.TraitSelectors += "<option value='"+trait.Key+"'>"+trait.Key+"</option>";
             }
 
-            //TODO: Complete functionality for spending character points on traits
-                // int traitP = 0;
-                // if(trait.Value[1] == "Minor"){
-                //     traitP = 1;
-                // }
-                // if(trait.Value[1] == "Major"){
-                //     traitP = 2;
-                // }
-                // if(trait.Value[0] == "Good"){
-                //     traitPool += traitP;
-                // }
-                // else{
-                //     traitPool -= traitP;
-                // }
-
+            // TODO: Complete functionality for spending character points on traits
+            int traitPool = 0;
+            foreach(var trait in Traits.PlayerTraits){
+                int traitP = 0;
+                ViewBag.Traits += "<li>"+trait.Key+"</li>";
+                if(trait.Value[1] == "Minor"){
+                    traitP = 1;
+                }
+                if(trait.Value[1] == "Major"){
+                    traitP = 2;
+                }
+                if(trait.Value[0] == "Good"){
+                    traitPool += traitP;
+                }
+                else{
+                    traitPool -= traitP;
+                }
+            }
 
             //Remove attribute and trait values from character points
-            charP = 24 - Awareness - Coordination - Ingenuity - Presence - Resolve - Strength;
+            charP = 24 - Awareness - Coordination - Ingenuity - Presence - Resolve - Strength - traitPool;
             int skillPool = athletics + convince + craft + fighting + knowledge + marksman + medicine + science + subterfuge + survival + technology + transport;
 
             while(charP > 0 && skillPool > 0){
@@ -388,16 +390,23 @@ namespace AiTaS.Controllers
             return RedirectToAction("Index");
         }
 
+        //NOTE: If the following code doesn't break soon, remove the dummied lines
+        
         [HttpPost]
         [Route("traitAdd")]
         public IActionResult TraitAdd(){
             string TraitName = HttpContext.Session.GetString("CurrentTrait");
-            string TraitStr = HttpContext.Session.GetString("Traits");
-            TraitStr += "<li>"+TraitName+"</li>";
-            HttpContext.Session.SetString("Traits", TraitStr);
+            // string TraitStr = HttpContext.Session.GetString("Traits");
+            try{
+            Traits.PlayerTraits.Add(TraitName, new [] {Traits.TraitsList[TraitName][0],Traits.TraitsList[TraitName][1],Traits.TraitsList[TraitName][2],Traits.TraitsList[TraitName][3],Traits.TraitsList[TraitName][4]});
+            }
+            catch{
+                //INSERT: Error code
+            }
+            // TraitStr += "<li>"+TraitName+"</li>";
+            // HttpContext.Session.SetString("Traits", TraitStr);
             return RedirectToAction("Index");
         }
-
 
 
         public void AwarenessConvert(int Awareness){
