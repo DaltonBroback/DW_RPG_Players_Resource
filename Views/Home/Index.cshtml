@@ -142,13 +142,16 @@
     @Html.Raw(@ViewBag.Traits)
     </ul>
     <form action = 'traitSort' method = 'post'>
-        <input type = 'checkbox' name = 'good' value = "checked" checked> Good 
-        <input type = 'checkbox' name = 'bad' value = "checked" checked> Bad <br>
-        <input type = 'checkbox' name = 'minor' value = "checked" checked> Minor 
-        <input type = 'checkbox' name = 'major' value = "checked" checked> Major 
-        <input type = 'checkbox' name = 'special' value = "checked" checked> Special <br>
-        <input type = 'checkbox' name = 'core' value = "checked" checked> Core Book (Normal Traits) 
-        <input type = 'checkbox' name = 'coreAlien' value = "checked" checked> Core Book (Alien Traits)
+        <input type = 'checkbox' name = 'alignmentAll' value = "checked" checked> All 
+        <input type = 'checkbox' name = 'good' value = "checked"> Good 
+        <input type = 'checkbox' name = 'bad' value = "checked"> Bad <br>
+        <input type = 'checkbox' name = 'valueAll' value = "checked" checked> All 
+        <input type = 'checkbox' name = 'minor' value = "checked"> Minor 
+        <input type = 'checkbox' name = 'major' value = "checked"> Major 
+        <input type = 'checkbox' name = 'special' value = "checked"> Special <br>
+        <input type = 'checkbox' name = 'sourceAll' value = "checked" checked> All
+        <input type = 'checkbox' name = 'core' value = "checked"> Core Book (Normal Traits) 
+        <input type = 'checkbox' name = 'coreAlien' value = "checked"> Core Book (Alien Traits)<br>
         <button action = 'submit'> Sort Traits</button>
     </form>
     <form action = 'traitSelect' method = 'post'>
