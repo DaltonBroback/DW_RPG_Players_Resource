@@ -18,6 +18,42 @@ namespace AiTaS.Controllers
         [Route("")]
         public IActionResult Index()
         {
+            string name = HttpContext.Session.GetString("charName");
+            string goal = HttpContext.Session.GetString("charGoal");
+            string personality = HttpContext.Session.GetString("charPersonality");
+            string background = HttpContext.Session.GetString("charBackground");
+            string buttons = HttpContext.Session.GetString("charButtons");
+            
+            if(name == null){
+                name = "The Doctor";
+            }
+            if(goal == null){
+                goal = "To find out if he is a good man.";
+            }
+            if(personality == null){
+                personality = "Quirky and not always easy to get alomg with, but never cruel or cowardly.";
+            }
+            if(background == null){
+                background = "Not much is known about him except that he stole his TARDIS from Gallifrey";
+            }
+            if(buttons == null){
+                buttons = "<button action = 'submit' name = 'bioOptions' value = 'edit'>Edit</button>";
+            }
+
+            ViewBag.name = name;
+            ViewBag.goal = goal;
+            ViewBag.personality = personality;
+            ViewBag.background = background;
+            ViewBag.buttons = buttons;
+
+            HttpContext.Session.SetString("charName", name);
+            HttpContext.Session.SetString("charGoal", goal);
+            HttpContext.Session.SetString("charPersonality", personality);
+            HttpContext.Session.SetString("charBackground", background);
+            HttpContext.Session.SetString("charButtons", buttons);
+    
+        
+
             //Default starting values
             int charP = 24;
             int skillP = 18;
@@ -177,6 +213,36 @@ namespace AiTaS.Controllers
             ViewBag.transport = transport;
 
             return View();
+        }
+
+        [HttpPost]
+        [Route("biodata")]
+        public IActionResult Biodata(string nameInput, string goalInput, string personalityInput, string backgroundInput, string bioOptions){
+            string name = HttpContext.Session.GetString("charName");
+            string goal = HttpContext.Session.GetString("charGoal");
+            string personality = HttpContext.Session.GetString("charPersonality");
+            string background = HttpContext.Session.GetString("charBackground");
+            string buttons = HttpContext.Session.GetString("charButtons");
+            if(bioOptions == "edit"){
+                name = "<input type = 'text' name = 'nameInput' value = '"+name+"'>";
+                goal = "<br><input type = 'textarea' name = 'nameInput' value = '"+goal+"'>";
+                personality = "<br><input type = 'textarea' name = 'nameInput' value = '"+personality+"'>";
+                background = "<br><input type = 'textarea' name = 'nameInput' value = '"+background+"'>";
+                buttons =  "<button action = 'submit' name = 'bioOptions' value = 'save'>Save</button>";
+            }
+            if(bioOptions == "save"){
+                name = nameInput;
+                goal = goalInput;
+                personality = personalityInput;
+                background = backgroundInput;
+                buttons = "<button action = 'submit' name = 'bioOptions' value = 'edit'>Edit</button>";
+            }
+            HttpContext.Session.SetString("charName", name);
+            HttpContext.Session.SetString("charGoal", goal);
+            HttpContext.Session.SetString("charPersonality", personality);
+            HttpContext.Session.SetString("charBackground", background);
+            HttpContext.Session.SetString("charButtons", buttons);
+            return RedirectToAction("Index");
         }
 
         //Save selected values to session upon submitting attributes

@@ -11,13 +11,15 @@
         Skill Points: @ViewBag.skillP<br>
         Max Story Points: @ViewBag.storyP<br>
         </p>
-
         <h3>Biodata</h3>
-        <p>Name:</p>
-        <h4>Description</h4>
-        <p>Personal Goal:<br>
-        Peronality:<br>
-        Background:</p>
+        <form action = "biodata" method = "post">
+            <p><b>Name:</b>  @Html.Raw(@ViewBag.name)</p>
+            <h4>Description</h4>
+            <p><b>Personal Goal:</b>  @Html.Raw(@ViewBag.goal)<br>
+            <b>Peronality:</b>  @Html.Raw(@ViewBag.personality)<br>
+            <b>Background:</b>  @Html.Raw(@ViewBag.background)</p><br>
+             @Html.Raw(@ViewBag.buttons)
+        </form>
     </div>
     <div id = "Attributes">
         <h3>Attributes</h3>

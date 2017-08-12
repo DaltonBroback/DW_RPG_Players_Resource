@@ -1322,7 +1322,7 @@ namespace AiTaS.Controllers
                 "Vortex is a Special Trait, costing 1 point, and is not for beginning characters (unless they have a background of using a TARDIS or other Vortex Manipulators). Selecting Vortex as a trait at character creation has to be approved by the Gamemaster. The Vortex trait adds +2 to any roll that involves piloting a time travel or Vortex-manipulating device. Controlling the TARDIS (or other such time vessels) is so tricky to the unskilled, that it is almost impossible to actually be able to succeed at the task without having the Vortex trait. An additional ‘level’ of Vortex is available to characters with the Alien trait (see pg. 49), and costs 8 points. This high level of Vortex means the character can time travel without the need of a ship or device, literally stepping through time. This is an Alien trait and is best reserved for Villains or NPCs. To step through time requires an Ingenuity and Resolve Roll to use, and the expenditure of two Story Points. The more successful the roll, the more accurate the ‘jump’."} },
 
             //ALIEN TRAITS - For testing purposes
-            //TODO: Finish adding remaining skills
+            //TODO: Finish adding remaining traits
             { "Additional Limbs", new [] { 
                 "Good", 
                 "Special", 
