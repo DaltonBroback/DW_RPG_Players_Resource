@@ -225,9 +225,9 @@ namespace AiTaS.Controllers
             string buttons = HttpContext.Session.GetString("charButtons");
             if(bioOptions == "edit"){
                 name = "<input type = 'text' name = 'nameInput' value = '"+name+"'>";
-                goal = "<br><input type = 'textarea' name = 'nameInput' value = '"+goal+"'>";
-                personality = "<br><input type = 'textarea' name = 'nameInput' value = '"+personality+"'>";
-                background = "<br><input type = 'textarea' name = 'nameInput' value = '"+background+"'>";
+                goal = "<br><textarea rows='4' cols='50' name = 'goalInput'>"+goal+"</textarea>";
+                personality = "<br><textarea rows='4' cols='50' name = 'personalityInput'>"+personality+"</textarea>";
+                background = "<br><textarea rows='4' cols='50' name = 'backgroundInput'>"+background+"</textarea>";
                 buttons =  "<button action = 'submit' name = 'bioOptions' value = 'save'>Save</button>";
             }
             if(bioOptions == "save"){
