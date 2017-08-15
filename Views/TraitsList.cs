@@ -1335,6 +1335,55 @@ namespace AiTaS.Controllers
                 "Many hands make light work, or so they say (though try saying that to Alexander Monro). Taking this trait means that the alien has an additional pair of limbs. This can mean arms or legs or an odd alien limb or tentacle that functions as both. Of course, taking an additional pair of limbs means that the character is usually very obviously an alien in appearance, and will automatically get the Alien Appearance Bad Trait (Minor). The Additional Limbs trait can be taken a second time, giving the alien a cumulative bonus, but their Alien Appearance trait becomes Major.",
                 "Additional Limbs is a Minor Good Alien Trait, and costs just 1 point for every additional pair of limbs. If the alien has additional legs, their effective Speed (when calculating chases and alike) is increased by +2. If the limbs are arms, the first additional action in any action round receives no penalty (as they can effectively do two things at once). This trait can be taken twice to create an eight limbed alien, though they will be obviously more alien. Additional limbs can be had on top of this, but they receive no bonus and cost no extra – there comes a point when you have so many legs or arms that it just becomes confusing and you can end up tripping over your own feet."} },
 
+            { "Alien Senses", new [] { 
+                "Good", 
+                "Minor", 
+                "core book (aliens)",
+                "stackable",
+                "specialty",
+                "1",
+                "0",
+                "0",
+                "Most of the time, simply having a really high Awareness means that your senses are particularly acute. However, some aliens have senses that go above and beyond what is considered normal. It could be that they can see infra-red or ultraviolet ends of the spectrum, they could see the eddies and flows of time, see paradoxes or simply smell their prey from a dozen rooms away. The cost of this trait could easily be offset by the Alien Appearance trait, saying that the character can see phenomenally well, but has big alien eyes",
+                "Alien Senses is a Minor Good Alien Trait. At character creation, the sense that is particularly good (whether this is sight, hearing, smell or something more exotic) should be specified and the particulars of the extraordinary perception (what is so special about it and what is sensed). When the alien uses the sense, it gains a +4 bonus to Awareness rolls but only when using that sense. If the environment effects the sense, this bonus may be reduced. For example, an alien that can see into the infra-red range of the spectrum can see the heat given off by people. He gains a +4 bonus to his rolls when he spots the approaching Sontaran in the dark, but once the shooting starts, and things start exploding, everything will be hot and the bonus from his alien sense will be lost. This trait can be taken multiple times - specify a different sense each time. Note: Cannot be used with the Keen Senses trait."} },
+                
+            { "Armour (Minor)", new [] { 
+                "Good", 
+                "Minor", 
+                "core book (aliens)",
+                "stackable",
+                "no specialty",
+                "1",
+                "0",
+                "0",
+                "Armour as an Alien Trait means that the alien has ‘natural’ armour that protects it. Armour counts as ‘natural’ if it cannot be removed. For example, a Sontaran wears very heavy battle armour, but can remove it. Cybermen and Daleks are literally built into their armoured casings and the armour cannot be removed. If it’s a permanent feature (whether this is a cybernetic suit, or just very tough, leathery skin) it is an Alien Trait.",
+                "Alien Senses is a Minor Good Alien Trait. At character creation, the sense that is particularly good (whether this is sight, hearing, smell or something more exotic) should be specified and the particulars of the extraordinary perception (what is so special about it and what is sensed). When the alien uses the sense, it gains a +4 bonus to Awareness rolls but only when using that sense. If the environment effects the sense, this bonus may be reduced. For example, an alien that can see into the infra-red range of the spectrum can see the heat given off by people. He gains a +4 bonus to his rolls when he spots the approaching Sontaran in the dark, but once the shooting starts, and things start exploding, everything will be hot and the bonus from his alien sense will be lost. This trait can be taken multiple times - specify a different sense each time. Note: Cannot be used with the Keen Senses trait."} },
+
+            { "Armour (Major)", new [] { 
+                "Good", 
+                "Major", 
+                "core book (aliens)",
+                "stackable",
+                "no specialty",
+                "2",
+                "0",
+                "0",
+                "Armour as an Alien Trait means that the alien has ‘natural’ armour that protects it. Armour counts as ‘natural’ if it cannot be removed. For example, a Sontaran wears very heavy battle armour, but can remove it. Cybermen and Daleks are literally built into their armoured casings and the armour cannot be removed. If it’s a permanent feature (whether this is a cybernetic suit, or just very tough, leathery skin) it is an Alien Trait.",
+                "Alien Senses is a Minor Good Alien Trait. At character creation, the sense that is particularly good (whether this is sight, hearing, smell or something more exotic) should be specified and the particulars of the extraordinary perception (what is so special about it and what is sensed). When the alien uses the sense, it gains a +4 bonus to Awareness rolls but only when using that sense. If the environment effects the sense, this bonus may be reduced. For example, an alien that can see into the infra-red range of the spectrum can see the heat given off by people. He gains a +4 bonus to his rolls when he spots the approaching Sontaran in the dark, but once the shooting starts, and things start exploding, everything will be hot and the bonus from his alien sense will be lost. This trait can be taken multiple times - specify a different sense each time. Note: Cannot be used with the Keen Senses trait."} },
+
+            { "Armour (Special)", new [] { 
+                "Good", 
+                "Special", 
+                "core book (aliens)",
+                "stackable",
+                "no specialty",
+                "3",
+                "0",
+                "0",
+                "Armour as an Alien Trait means that the alien has ‘natural’ armour that protects it. Armour counts as ‘natural’ if it cannot be removed. For example, a Sontaran wears very heavy battle armour, but can remove it. Cybermen and Daleks are literally built into their armoured casings and the armour cannot be removed. If it’s a permanent feature (whether this is a cybernetic suit, or just very tough, leathery skin) it is an Alien Trait.",
+                "Alien Senses is a Minor Good Alien Trait. At character creation, the sense that is particularly good (whether this is sight, hearing, smell or something more exotic) should be specified and the particulars of the extraordinary perception (what is so special about it and what is sensed). When the alien uses the sense, it gains a +4 bonus to Awareness rolls but only when using that sense. If the environment effects the sense, this bonus may be reduced. For example, an alien that can see into the infra-red range of the spectrum can see the heat given off by people. He gains a +4 bonus to his rolls when he spots the approaching Sontaran in the dark, but once the shooting starts, and things start exploding, everything will be hot and the bonus from his alien sense will be lost. This trait can be taken multiple times - specify a different sense each time. Note: Cannot be used with the Keen Senses trait."} },
+
+
             //TODO: Add traits from other expansions
         };
     }
