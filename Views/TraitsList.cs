@@ -1383,6 +1383,54 @@ namespace AiTaS.Controllers
                 "Armour as an Alien Trait means that the alien has ‘natural’ armour that protects it. Armour counts as ‘natural’ if it cannot be removed. For example, a Sontaran wears very heavy battle armour, but can remove it. Cybermen and Daleks are literally built into their armoured casings and the armour cannot be removed. If it’s a permanent feature (whether this is a cybernetic suit, or just very tough, leathery skin) it is an Alien Trait.",
                 "Alien Senses is a Minor Good Alien Trait. At character creation, the sense that is particularly good (whether this is sight, hearing, smell or something more exotic) should be specified and the particulars of the extraordinary perception (what is so special about it and what is sensed). When the alien uses the sense, it gains a +4 bonus to Awareness rolls but only when using that sense. If the environment effects the sense, this bonus may be reduced. For example, an alien that can see into the infra-red range of the spectrum can see the heat given off by people. He gains a +4 bonus to his rolls when he spots the approaching Sontaran in the dark, but once the shooting starts, and things start exploding, everything will be hot and the bonus from his alien sense will be lost. This trait can be taken multiple times - specify a different sense each time. Note: Cannot be used with the Keen Senses trait."} },
 
+            { "Climbing (Minor)", new [] { 
+                "Good", 
+                "Minor", 
+                "core book (aliens)",
+                "one time",
+                "no specialty",
+                "1",
+                "0",
+                "0",
+                "As a Minor Good Trait, Climbing means that the alien can climb up sheer and difficult surfaces. While they cannot climb surfaces without any grip, such as glass, they certainly find it easy to climb walls. They receive a +4 bonus to Coordination and Athletics rolls when climbing.",
+                "As a Major Trait they have suckers, fine hairs or secrete some sort of substance that provides them the same +4 bonus, making them able to climb smooth surfaces such as glass or metal, as well as clinging to the ceiling like a spider."} },
+
+            { "Climbing (Major)", new [] { 
+                "Good", 
+                "Major", 
+                "core book (aliens)",
+                "one time",
+                "no specialty",
+                "2",
+                "0",
+                "0",
+                "As a Minor Good Trait, Climbing means that the alien can climb up sheer and difficult surfaces. While they cannot climb surfaces without any grip, such as glass, they certainly find it easy to climb walls. They receive a +4 bonus to Coordination and Athletics rolls when climbing.",
+                "As a Major Trait they have suckers, fine hairs or secrete some sort of substance that provides them the same +4 bonus, making them able to climb smooth surfaces such as glass or metal, as well as clinging to the ceiling like a spider."} },
+
+            { "Environmental (Minor)", new [] { 
+                "Good", 
+                "Minor", 
+                "core book (aliens)",
+                "one time",
+                "no specialty",
+                "1",
+                "0",
+                "0",
+                "Environmental is a catch-all trait that means the alien can exist in strange or harsh environments. It could be that they are aquatic, and can exist just as well underwater as on land. They may be able to survive in the vacuum of space, endure the harsh heat of a volcanic world, the extreme cold of Volag-Noc or exist in the Vortex itself.",
+                "As a Minor Good Trait, the alien suffers no ill effects from one particular harsh condition. If it’s something like being able to survive underwater, their ability should be explained. Do they have gills, or can they store oxygen in some way? As a Major Good Trait, the alien suffers no effects from any environment – for example, a Dalek can fly through space or drive along the bottom of the Thames. Again, there should be some rationalisation of this, such as the Dalek’s battle armour."} },
+
+            { "Environmental (Major)", new [] { 
+                "Good", 
+                "Major", 
+                "core book (aliens)",
+                "one time",
+                "no specialty",
+                "2",
+                "0",
+                "0",
+                "Environmental is a catch-all trait that means the alien can exist in strange or harsh environments. It could be that they are aquatic, and can exist just as well underwater as on land. They may be able to survive in the vacuum of space, endure the harsh heat of a volcanic world, the extreme cold of Volag-Noc or exist in the Vortex itself.",
+                "As a Minor Good Trait, the alien suffers no ill effects from one particular harsh condition. If it’s something like being able to survive underwater, their ability should be explained. Do they have gills, or can they store oxygen in some way? As a Major Good Trait, the alien suffers no effects from any environment – for example, a Dalek can fly through space or drive along the bottom of the Thames. Again, there should be some rationalisation of this, such as the Dalek’s battle armour."} },
+
 
             //TODO: Add traits from other expansions
         };
